@@ -6,7 +6,7 @@ import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart' as pp;
 import 'package:url_launcher/url_launcher.dart';
 
-const _host = 'http://localhost:8080';
+const _host = 'https://unitech-file-server-gskgoc2hxq-ez.a.run.app';
 
 class UploadDownloadService {
   final _dio = Dio(
@@ -53,9 +53,6 @@ class UploadDownloadService {
 
   Future<void> viewFile(String url) async {
     final uri = Uri.parse('$_host/files/$url');
-    // final uri = Uri.parse(
-    //   'https://storage.cloud.google.com/innostrategies_net_bucket/7b979ff9-865a-4905-9e3b-24b01a9ac672-The%20ONE%20Thing%20by%20Gary%20Keller%20(z-lib.org).epub,',
-    // );
     if (!await launchUrl(uri)) {
       throw 'Could not lauch $url';
     }
