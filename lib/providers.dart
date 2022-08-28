@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:firestore_proxy_client/file_download_provider.dart';
 import 'package:firestore_proxy_client/file_picker_service.dart';
 import 'package:firestore_proxy_client/file_upload_provider.dart';
@@ -28,4 +30,12 @@ final imageUploadProvider =
     StateNotifierProvider<ImageUploadStateNotifier, ImageUploadState>((ref) {
   final fileService = ref.read(uploadDownloadProvider);
   return ImageUploadStateNotifier(fileService: fileService);
+});
+
+final fileToMemoryProvider = FutureProvider.family<Uint8List, String>((
+  ref,
+  String imageUrl,
+) async {
+  final file = await ref.read(uploadDownloadProvider).downloadFile(imageUrl);
+  return file.readAsBytes();
 });

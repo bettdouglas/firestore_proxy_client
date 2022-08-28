@@ -19,12 +19,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'File/Image Upload Example',
       theme: ThemeData.light().copyWith(),
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Markdown example'),
-        ),
-        body: const HomePage(),
-      ),
+      home: const HomePage(),
     );
   }
 }
